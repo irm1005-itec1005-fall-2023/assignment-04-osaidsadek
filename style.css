@@ -1,21 +1,26 @@
-
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
 }
 
 .app-container {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 600px;
+  transition: box-shadow 0.3s; /* Adding transition for box-shadow */
+}
+
+.app-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow on hover */
 }
 
 .app-title {
@@ -23,8 +28,9 @@ body {
   text-align: center;
 }
 
-.input-container, .filter-container {
-  margin-bottom: 15px;
+.todo-input-section,
+.todo-list-section {
+  margin: 20px 0;
 }
 
 #todo-input {
@@ -33,6 +39,11 @@ body {
   border: 2px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
+  transition: border-color 0.3s; /* Adding transition for border-color */
+}
+
+#todo-input:focus {
+  border-color: #5cb85c; /* Changing border color on focus for better feedback */
 }
 
 #add-todo-btn {
@@ -44,6 +55,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 #add-todo-btn:hover {
@@ -63,35 +75,29 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.todo-item:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.02);
 }
 
 .todo-item.completed {
   text-decoration: line-through;
   color: #999;
+  opacity: 0.7; /* Reducing opacity for completed items */
 }
 
-.delete-btn {
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
+/* Additional styles for visual enhancements */
+.todo-item {
+  transition: background-color 0.3s, transform 0.3s, opacity 0.3s; /* Adding opacity transition */
 }
 
-.delete-btn:hover {
-  background-color: #c9302c;
+.todo-item:hover {
+  background-color: #a8dadc;
+  transform: scale(1.02);
 }
 
-.filter-btn {
-  background-color: #f0f0f0;
-  color: #333;
-  border: 1px solid #ddd;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
-.filter-btn.active {
-  background-color: #ddd;
-}
+
