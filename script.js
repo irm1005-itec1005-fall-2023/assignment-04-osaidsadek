@@ -1,43 +1,26 @@
-/* Assignment 04: Finishing a Todo List App
- *
- * 
- *
- */
+document.getElementById('add-todo-btn').addEventListener('click', addTodo);
 
-
-//
-// Variables
-//
-
-// Constants
-const appID = "app";
-const headingText = "To do. To done. ✅";
-
-// DOM Elements
-let appContainer = document.getElementById(appID);
-
-//
-// Functions
-//
-
-// Add a heading to the app container
-function inititialise() {
-  // If anything is wrong with the app container then end
-  if (!appContainer) {
-    console.error("Error: Could not find app contianer");
-    return;
-  }
-
-  // Create an h1 and add it to our app
-  const h1 = document.createElement("h1");
-  h1.innerText = headingText;
-  appContainer.appendChild(h1);
-
-  // Init complete
-  console.log("App successfully initialised");
+function addTodo() {
+    var input = document.getElementById('todo-input');
+    var text = input.value.trim();
+    if (text) {
+        var li = document.createElement('li');
+        li.className = 'todo-item';
+        li.textContent = text;
+        li.addEventListener('click', function () {
+            this.classList.toggle('completed');
+        });
+        document.getElementById('todo-list').appendChild(li);
+        input.value = '';
+    } else {
+        alert('Please enter a valid task.');
+    }
 }
 
-//
-// Inits & Event Listeners
-//
-inititialise();
+// Additional functionality for deleting a to-do item (not provided in your original code)
+document.getElementById('todo-list').addEventListener('click', function (e) {
+    if (e.target && e.target.matches('li.todo-item')) {
+        e.target.remove();
+    }
+});
+
